@@ -42,9 +42,18 @@ namespace AlcoholShop.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<AlcoholModel> Get(int id)
         {
-            return "value";
+            try
+            {
+                var result = _repository.Get_Alcohol_byId(id);
+                if (result == null) return BadRequest();
+                return Ok(_mapper.Map<AlcoholModel>(result));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Failed database");
+            }
         }
 
         // POST api/values
@@ -64,14 +73,40 @@ namespace AlcoholShop.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult Put(int id, [FromBody] AlcoholModel model)
         {
+            try
+            {
+                var alcohol = _repository.Get_Alcohol_byId(id);
+                if (alcohol == null) return NotFound();
+
+                _mapper.Map(model, alcohol);
+                _repository.SaveChanges();
+                return Ok(alcohol);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Failed database");
+            }
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
+            try
+            {
+                var alcohol = _repository.Get_Alcohol_byId(id);
+                if (alcohol == null) return NotFound();
+
+                _repository.Delete(alcohol);
+                _repository.SaveChanges();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Failed database");
+            }
         }
     }
 }
