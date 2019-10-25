@@ -26,7 +26,7 @@ namespace AlcoholShop.Migrations
 
                     b.Property<double>("Alcohol_degree");
 
-                    b.Property<int>("Alcohol_type");
+                    b.Property<string>("Alcohol_type");
 
                     b.Property<string>("Made_In");
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AlcoholShop.Data.Entites;
+using AlcoholShop.Models;
 
 namespace AlcoholShop.Data
 {
@@ -15,16 +16,16 @@ namespace AlcoholShop.Data
             this._context = context;
         }
 
-        public Alcohol Add(Alcohol model)
+        public Alcohol Add(AlcoholModel model)
         {
             Alcohol alcohol = new Alcohol
             {
-                Name = model.Name,
-                Alcohol_type = model.Alcohol_type,
-                Alcohol_degree = model.Alcohol_degree,
-                Pulled_from = model.Pulled_from,
-                Year_of_alcohol = model.Year_of_alcohol,
-                Made_In = model.Made_In
+                Name = model.Model_Name,
+                Alcohol_type = model.Model_Alcohol_type,
+                Alcohol_degree = model.Model_Alcohol_degree,
+                Pulled_from = model.Model_Pulled_from,
+                Year_of_alcohol = model.Model_Year_of_alcohol,
+                Made_In = model.Model_Made_In
             };
 
             _context.Add(alcohol);

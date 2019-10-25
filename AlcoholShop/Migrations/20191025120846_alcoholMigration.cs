@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AlcoholShop.Migrations
 {
-    public partial class AlcoholMigration : Migration
+    public partial class alcoholMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace AlcoholShop.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
-                    Alcohol_type = table.Column<int>(nullable: false),
+                    Alcohol_type = table.Column<string>(nullable: true),
                     Year_of_alcohol = table.Column<int>(nullable: false),
                     Alcohol_degree = table.Column<double>(nullable: false),
                     Made_In = table.Column<string>(nullable: true),

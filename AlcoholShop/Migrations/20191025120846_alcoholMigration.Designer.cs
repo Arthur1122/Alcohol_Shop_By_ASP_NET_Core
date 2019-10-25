@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AlcoholShop.Migrations
 {
     [DbContext(typeof(AlcoholContext))]
-    [Migration("20191025091019_AlcoholMigration")]
-    partial class AlcoholMigration
+    [Migration("20191025120846_alcoholMigration")]
+    partial class alcoholMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,7 +28,7 @@ namespace AlcoholShop.Migrations
 
                     b.Property<double>("Alcohol_degree");
 
-                    b.Property<int>("Alcohol_type");
+                    b.Property<string>("Alcohol_type");
 
                     b.Property<string>("Made_In");
 

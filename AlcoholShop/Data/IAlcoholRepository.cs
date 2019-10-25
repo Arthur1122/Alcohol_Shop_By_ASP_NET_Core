@@ -1,4 +1,5 @@
 ﻿using AlcoholShop.Data.Entites;
+using AlcoholShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace AlcoholShop.Data
     {
         Alcohol[]  Get_all_Alcohols();
         Alcohol Get_Alcohol_byId(int id);
-        Alcohol Add(Alcohol model);
+        Alcohol Add(AlcoholModel model);
         void Delete(Alcohol entity);
         bool SaveChanges();
 
