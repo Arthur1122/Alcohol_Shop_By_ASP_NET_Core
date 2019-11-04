@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AlcoholShop.Data;
+using AlcoholShop.Data.Entites;
 using AlcoholShop.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
@@ -12,8 +13,10 @@ namespace AlcoholShop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class AlcoholsController : ControllerBase
     {
+        System.Int32 n = 2;
         private readonly AlcoholContext _context;
         private readonly IMapper _mapper;
         private readonly IAlcoholRepository _repository;
@@ -25,6 +28,7 @@ namespace AlcoholShop.Controllers
             this._repository = repository;
         }
         // GET api/values
+        
         [HttpGet]
         public async Task <ActionResult<AlcoholModel>> Get()
         {
@@ -62,7 +66,7 @@ namespace AlcoholShop.Controllers
         {
             try
             {
-                var result = _repository.Add(model);
+                Alcohol result = _repository.Add(model);
                 return Ok();
             }
             catch (Exception ex)

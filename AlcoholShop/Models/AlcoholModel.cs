@@ -8,6 +8,7 @@ namespace AlcoholShop.Models
 {
     public class AlcoholModel
     {
+        public int Model_Id { get; set; }
         public string Model_Name { get; set; }
         public string Model_Alcohol_type { get; set; }
         public int Model_Year_of_alcohol { get; set; }
