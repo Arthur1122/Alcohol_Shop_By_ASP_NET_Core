@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http.Cors;
 using AlcoholShop.Data;
 using AlcoholShop.Data.Entites;
 using AlcoholShop.Models;
@@ -13,10 +14,10 @@ namespace AlcoholShop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
+   
     public class AlcoholsController : ControllerBase
     {
-        System.Int32 n = 2;
+        
         private readonly AlcoholContext _context;
         private readonly IMapper _mapper;
         private readonly IAlcoholRepository _repository;

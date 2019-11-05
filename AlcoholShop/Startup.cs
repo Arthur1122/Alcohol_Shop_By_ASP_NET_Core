@@ -29,9 +29,17 @@ namespace AlcoholShop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-                services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                        .AllowAnyMethod()
+                        .AllowCredentials()
+                        .SetIsOriginAllowed((host) => true)
+                        .AllowAnyHeader());
+            });
 
-                services.AddDbContext<AlcoholContext>();
+            services.AddDbContext<AlcoholContext>();
                 services.AddScoped<IAlcoholRepository, AlcoholRepository>();
                 services.AddAutoMapper();
                 services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -50,8 +58,7 @@ namespace AlcoholShop
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseCors(options => options.WithOrigins("http://localhost:3000/").AllowAnyMethod().AllowAnyOrigin());
-
+            app.UseCors("CorsPolicy");
             app.UseHttpsRedirection();
             app.UseMvc();
         }
