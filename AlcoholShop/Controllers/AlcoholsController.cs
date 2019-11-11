@@ -63,7 +63,7 @@ namespace AlcoholShop.Controllers
 
         // POST api/values
         [HttpPost]
-        public ActionResult Post([FromBody] AlcoholModel model)
+        public ActionResult Post(AlcoholModel model)
         {
             try
             {
@@ -77,12 +77,12 @@ namespace AlcoholShop.Controllers
         }
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public ActionResult Put(int id, [FromBody] AlcoholModel model)
+        [HttpPut]
+        public ActionResult Put(AlcoholModel model)
         {
             try
             {
-                var alcohol = _repository.Get_Alcohol_byId(id);
+                var alcohol = _repository.Get_Alcohol_byId(model.Model_Id);
                 if (alcohol == null) return NotFound();
 
                 _mapper.Map(model, alcohol);
